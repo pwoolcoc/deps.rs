@@ -150,8 +150,33 @@ fn render_success(analysis_outcome: AnalyzeDependenciesOutcome, repo_path: RepoP
             }
             div class="hero-footer" {
                 div class="container" {
-                    pre class="is-size-7" {
-                        (format!("[![dependency status]({}/status.svg)]({})", status_base_url, status_base_url))
+                    div class="tabs" {
+                        ul {
+                            li class="is-active" {
+                                a href="#markdown" {
+                                    "Markdown"
+                                }
+                            }
+                            li {
+                                a href="#asciidoc" {
+                                    "Asciidoc"
+                                }
+                            }
+                        }
+                    }
+                }
+                div class ="container" {
+                    div class="sources" {
+                        div id="markdown" class="is-active" {
+                            pre class="is-size-7" {
+                                (format!("[![dependency status]({}/status.svg)]({})\n", status_base_url, status_base_url))
+                            }
+                        }
+                        div id="asciidoc" class="is-hidden" {
+                            pre class="is-size-7" {
+                                (format!(r#"image::{}/status.svg[link="{}",alt="dependency status"\n"#, status_base_url, status_base_url))
+                            }
+                        }
                     }
                 }
             }
