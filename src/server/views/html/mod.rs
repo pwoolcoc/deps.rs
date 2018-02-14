@@ -35,6 +35,7 @@ fn render_html<B: Render>(title: &str, body: B) -> Response {
             }
             body {
                 (body)
+                script type="text/javascript" src="/static/app.js"
                 @if let Some(site_id) = GAUGES_SITE_ID.as_ref() {
                     script type="text/javascript" {
                         (format!("var _gauges = _gauges || [];
